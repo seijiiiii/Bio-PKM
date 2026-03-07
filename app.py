@@ -10,6 +10,7 @@ raw_note = st.text_input("Paste bio notes here")
 
 if st.button("Generate"):
     api_key = st.secrets["API_KEY"]
+    print (api_key)
     entries_result = generate_entries(raw_note, api_key) 
 
 st.divider()

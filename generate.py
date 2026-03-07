@@ -8,7 +8,7 @@ load_dotenv()
 # Initialise, API_KEY = your own api key
 def get_client():
     # API_KEY = os.getenv("API_KEY")
-    # print("DEBUG API:", API_KEY)
+    #print("DEBUG API:", API_KEY)
     if not API_KEY:
         raise ValueError("API_KEY not found")
     return genai.Client(api_key=API_KEY)
@@ -48,7 +48,7 @@ def generate_data(text_input, API_KEY):
     """
     # client = get_client()
 
-    genai.Client(api_key=API_KEY)
+    client = genai.Client(api_key=API_KEY)
     print("Starting extraction...")
 
     start = time.time()
