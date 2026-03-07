@@ -9,7 +9,10 @@ st.title("MVP4")
 raw_note = st.text_input("Paste bio notes here")
 
 if st.button("Generate"):
-    entries_result = generate_entries(raw_note) 
+    api_key = st.secrets["API_KEY"]
+    entries_result = generate_entries(raw_note, api_key) 
+
+st.divider()
 
 # Search entries
 query_input = st.text_input("Search entries") 

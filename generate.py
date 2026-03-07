@@ -4,17 +4,16 @@ from google import genai
 import time
 
 load_dotenv()
-print("API:", os.getenv("API_KEY"))
 
-# Initialise, api_key = your own api key
+# Initialise, API_KEY = your own api key
 def get_client():
-    api_key = os.getenv("API_KEY")
-    print("DEBUG API:", api_key)
-    if not api_key:
+    # API_KEY = os.getenv("API_KEY")
+    # print("DEBUG API:", API_KEY)
+    if not API_KEY:
         raise ValueError("API_KEY not found")
-    return genai.Client(api_key=api_key)
+    return genai.Client(api_key=API_KEY)
 
-def generate_data(text_input):
+def generate_data(text_input, API_KEY):
     prompt = """
     Extract core biological concepts (including mechanism, protein, structure) and return STRICT JSON.
 
@@ -47,7 +46,9 @@ def generate_data(text_input):
     - BE CLEAR
     - Do NOT generate markdown code block
     """
-    client = get_client()
+    # client = get_client()
+
+    genai.Client(api_key=API_KEY)
     print("Starting extraction...")
 
     start = time.time()
