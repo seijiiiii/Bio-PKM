@@ -10,7 +10,8 @@ As a biochemistry student, my coursemates and I encountered problems of converti
 The demo is deployed on the streamlit cloud: https://project-001.streamlit.app/
 
 ---
-The example text input:
+### The example text input:
+
 Splicing
 pre-mRNA in eukaryotes is spliced to **remove introns** and **ligate exons** together in **nucleus**
 - Introns are degraded, Exons exit the nuclear pore
