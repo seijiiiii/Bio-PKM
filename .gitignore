@@ -4,4 +4,4 @@ __pychache__/
 *.pyc
 *.pyo
 .venv/
-.toml
+secrets.toml

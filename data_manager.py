@@ -27,18 +27,39 @@ def load_data():
     with open(file_path, "r") as f:
         return json.load(f)
     
-# Data searching
+# Data searching # AND search
 def search_data(entries, query):
     results = []
     
     if not query: # if user input nothing, then show all of the entries
         return entries
-    else:
-        for entry in entries:
-            if (
-                # Convert input and data into lower case, so comparable
-                query.lower() in entry["name"].lower() or # prioritise
-                query.lower() in entry["role"].lower()
-            ):
-                results.append(entry) # adding element to the end of the list
-    return results
+    
+    keywords = query.lower().split()
+
+    for entry in entries:
+        name = entry["name"].lower()
+        role = entry["role"].lower()
+        definition = entry["definition"].lower()
+        context = entry["context"].lower()
+
+        if all(
+            keyword in name or 
+            keyword in role or 
+            keyword in definition or 
+            keyword in context
+            for keyword in keywords
+        ): # Ranking
+            if any(keyword in name for keyword in keywords):
+                score = 4
+            elif any(keyword in role for keyword in keywords):
+                score = 3
+            elif any(keyword in definition for keyword in keywords):
+                score = 2
+            else:
+                score = 1
+            results.append((score, entry))
+
+    results.sort(reverse=True, key=lambda x: x[0])
+
+    return [entry for score, entry in results]
+

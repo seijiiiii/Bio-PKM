@@ -7,6 +7,7 @@ load_dotenv()
 
 # Initialise, API_KEY = your own api key
 def get_client():
+    print("API Called")
     # API_KEY = os.getenv("API_KEY")
     #print("DEBUG API:", API_KEY)
     if not API_KEY:
