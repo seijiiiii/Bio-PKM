@@ -24,7 +24,7 @@ def load_data():
     if not os.path.exists(file_path):
         # st.error ("JSON file not found")
         return []
-    with open(file_path, "r") as f:
+    with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
     
 # Data searching # AND search
@@ -49,17 +49,25 @@ def search_data(entries, query):
             keyword in context
             for keyword in keywords
         ): # Ranking
-            if any(keyword in name for keyword in keywords):
-                score = 4
-            elif any(keyword in role for keyword in keywords):
-                score = 3
+            if any(keyword in context for keyword in keywords):
+                score = 1
             elif any(keyword in definition for keyword in keywords):
                 score = 2
+            elif any(keyword in role for keyword in keywords):
+                score = 3
             else:
-                score = 1
+                score = 4
             results.append((score, entry))
 
     results.sort(reverse=True, key=lambda x: x[0])
 
     return [entry for score, entry in results]
 
+def update_entry(index, updated_entry): # Edit
+    entries = load_data() # Load JSON
+    if 0 <= index < len(entries):
+        entries[index] = updated_entry  
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(entries, f, indent=2, ensure_ascii=False)
+        return True
+    return False
