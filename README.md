@@ -1,10 +1,10 @@
 # AI-powered flashcard based PKM tool
 A lightweight AI-powered tool that helps users quickly generate entries from uploaded notes, enabling establishing personal PKM, fast retrival, building long-term memory.
-The current version focuses on building the retrieval system for personal PKM.
-Future development will integrate spaced reprtition (flashcards) to help users build memory.
+The current version focuses on building the retrieval system for personal knowledge management (PKM).
+Future development will (probably) integrate spaced reprtition (flashcards) to help users build memory.
 
 ## Background
-As a biochemistry student, my coursemates and I encountered problems of converting learnt concepts into long-term memory and failed to retrive concepts from existing notes. This product aims at helping biological student building memories by solving the failure in quick retrival and 
+As a biochemistry student, my coursemates and I encountered problems of converting learnt concepts into long-term memory and failed to retrive concepts from existing notes. This product aims at helping biological student building memories by solving the failure in quick retrival 
 
 ## Demo and interface preview
 The demo is deployed on the streamlit cloud: https://project-001.streamlit.app/
@@ -29,7 +29,6 @@ Active site is at snRNA not protein
 During splicing, intron will be released in **Lariat shape**
 
 Capping, splicing and tailing factors are associated with the CTD of RNAP-II, > whose dynamic phosphorylation pattern ensures the correct timing and order of RNA processing during transcription.
->[!tip] RNA Pol II 的 CTD 充当一个platform，通过不同时间点的不同磷酸化状态，按顺序招募 capping → splicing → polyadenylation / termination 因子。
 
 Post-transcriptional modification is sometimes co-transcriptional
 
