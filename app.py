@@ -1,6 +1,6 @@
 import streamlit as st
 from pipeline import generate_entries, search_entries
-from data_manager import load_data, update_entry
+from data_manager import load_data, update_entry, delete_entry
 from utils import highlight
 
 st.set_page_config(page_title="Project 001")
@@ -21,9 +21,15 @@ def render_entry(entry, query, real_index):
     st.markdown(highlight(entry.get("role", ""), query), unsafe_allow_html=True)
     st.markdown(highlight(entry.get("context", ""), query), unsafe_allow_html=True)
 
-    if st.button("Edit", key=f"edit_{real_index}"):
-        st.session_state.editing_index = real_index
-        st.rerun()
+    col1, col2 = st.columns([5, 1])
+    with col1:
+        if st.button("Edit", key=f"edit_{real_index}"):
+            st.session_state.editing_index = real_index
+            st.rerun()
+    with col2:
+        if st.button("Delete", key=f"delete_{real_index}"):
+            delete_entry(real_index)
+            st.rerun()
 
 
 def render_edit_form(entry, real_index): # Render after pressing Edit button
